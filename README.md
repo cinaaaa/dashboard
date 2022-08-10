@@ -1,5 +1,5 @@
 # GOAT management dashboard
-This repo is created for GOAT administration purposes, CRUD the things across all resources
+The GOAT management dashboard is created for configuring GOAT. It mostly allows CRUD the things across all resources
 
 ## Run it locally
 
@@ -16,10 +16,6 @@ pnpm install
 How to install pnpm? https://pnpm.io/installation
 
 3. Run the project with the `pnpm dev` command
-
-4. Important note about CORS
-To handle the CORS issue in the project, I've just write a simple node proxy server to redirect localhost:4000 requests to the goat dev domain, so don't forget to run the node proxy before running the dashboard repo
-Proxy code: https://gist.github.com/cinaaaa/eb604347841a83fb3e3506e1b2897907
 
 ## Structure Overview
 
