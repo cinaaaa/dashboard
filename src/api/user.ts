@@ -11,7 +11,12 @@ import type {
   StudyAreas,
   UserRoles
 } from "@types";
-import { instance, listQueryGenerator, objectToFormData } from "@utils";
+import {
+  instance,
+  listQueryGenerator,
+  objectToFormData,
+  URLParams
+} from "@utils";
 
 export function getAccessToken(
   creditionals: UserCreditionals
@@ -51,18 +56,8 @@ export function recoverPassword(
 export function getUsers(
   params: GetListParams
 ): RequestResult<{ data: User[]; total: number }> {
-  // parameters and filters
-  const limit = `limit=${params.pagination.perPage}`;
-  const query = params.filter.q !== undefined ? `&q=${params.filter.q}` : "";
-  const sort = `&ordering=${
-    params.sort.order === "DESC" ? params.sort.field : "-" + params.sort.field
-  }`;
-  const skip = `skip=${
-    (params.pagination.page - 1) * params.pagination.perPage
-  }`;
-
   return instance
-    .get(`/users?${limit}&${skip + query + sort}`)
+    .get("/users" + URLParams(params))
     .then((response: any) => ({
       data: response.data,
       total: response.headers["x-total-count"]
